@@ -1,0 +1,18 @@
+[
+    {
+        "shift_type": "Schankwagen",
+        "first_shift_start": "2026-06-05T13:00:00+02:00",
+        "shift_duration": 2,
+        "locations": ["Wagen 1", "Wagen 2"],
+        "number_of_shifts": [5, 5],
+        "people_per_shift": [6, 4]
+    },
+    {
+        "shift_type": "Bühne",
+        "first_shift_start": "2026-06-05T14:00:00+02:00",
+        "shift_duration": 3,
+        "locations": ["Bühne 1", "Bühne 2"],
+        "number_of_shifts": [4, 2],
+        "people_per_shift": [4, 2]
+    }
+]
