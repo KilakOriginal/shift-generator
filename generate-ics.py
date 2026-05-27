@@ -13,14 +13,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "-f", "--file",
         type=Path,
-        required=True,
         help="Path to master schedule csv file"
     )
 
     parser.add_argument(
         "-o", "--output",
         type=Path,
-        default=Path("Output"),
         help="Directory for output ics files and manifest"
     )
 
@@ -60,6 +58,7 @@ def read_master_schedule(file_path: Path) -> dict:
         with file_path.open('r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
+                print(row)
                 email = row.get('email', '').strip()
                 if not email:
                     continue
@@ -135,21 +134,25 @@ def main() -> int:
     args = parse_args()
     setup_logging(args)
 
-    if not args.file.exists():
-        logging.error(f"Master schedule file not found: {args.file}")
+    master_schedule = args.file or Path(__file__).resolve().parent / "Output/master_schedule.csv"
+
+    if not master_schedule.exists():
+        logging.error(f"Master schedule file not found: {master_schedule}")
         return 1
 
-    logging.info(f"Reading master schedule from {args.file}")
-    volunteers = read_master_schedule(args.file)
+    logging.info(f"Reading master schedule from {master_schedule}...")
+    volunteers = read_master_schedule(master_schedule)
     
     if not volunteers:
         logging.warning("No volunteers found in the master schedule.")
         return 0
 
+    output_dir = args.output or Path(__file__).resolve().parent / "Output/ics"
+
     logging.info(f"Generating ICS files for {len(volunteers)} volunteers...")
-    manifest_entries = generate_ics_files(volunteers, args.output)
+    manifest_entries = generate_ics_files(volunteers, output_dir)
     
-    write_manifest(manifest_entries, args.output)
+    write_manifest(manifest_entries, output_dir)
     logging.info("ICS generation complete.")
 
     return 0

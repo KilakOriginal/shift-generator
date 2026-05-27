@@ -22,14 +22,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "-i", "--input",
         type=Path,
-        required=True,
         help="Path to email content text file"
     )
 
     parser.add_argument(
         "-m", "--manifest",
         type=Path,
-        required=False,
         help="Path to manifest file"
     )
 
@@ -37,7 +35,6 @@ def parse_args() -> argparse.Namespace:
         "-r", "--receipients",
         nargs='+',
         type=str,
-        required=False,
         help="Email receipients"
     )
 
@@ -51,7 +48,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "-a", "--attachments-dir",
         type=Path,
-        required=False,
         help="Path to directory containing attachments for all emails"
     )
 
@@ -196,9 +192,10 @@ def main() -> int:
     args: argparse.Namespace = parse_args()
     setup_logging(args)
 
-    static_attachments = load_static_attachments(args.attachments_dir)
+    attachments_dir = args.attachments_dir or (Path(__file__).parent / "Input/email/attachments")
+    static_attachments = load_static_attachments(attachments_dir)
 
-    manifest_file = args.manifest or (Path(__file__).parent / "Output/manifest.txt")
+    manifest_file = args.manifest or (Path(__file__).parent / "Output/ics/manifest.txt")
     receipients = read_receipients(manifest_file)
             
     failed: list[str] = []
@@ -209,7 +206,8 @@ def main() -> int:
         logging.warning("No receipients. Exiting...")
         return 0
     
-    content = read_email_content(args.input)
+    input_file = args.input or (Path(__file__).parent / "Input/email/text.txt")
+    content = read_email_content(input_file)
     if content is None:
         return 1
     

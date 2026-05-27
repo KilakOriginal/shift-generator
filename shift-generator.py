@@ -370,7 +370,7 @@ def read_volunteers(input_csv: Path) -> dict:
                 "first_name": first_name,
                 "last_name": last_name,
                 "email": email,
-                "phone": phone,
+                "phone": phone.replace("'", ""),
                 "availability_buildup": normalize_availability(availability[0]),
                 "availability_festival": normalize_availability(availability[1]),
                 "availability_teardown": normalize_availability(availability[2]),

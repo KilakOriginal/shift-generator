@@ -5,7 +5,7 @@
         "shift_duration": [[1.5, 1.75, 1.75, 1.75, 1.75, 1.25], [1.75, 1.75, 1.75, 1.75, 1.75, 1.25], [1.75, 1.75, 1.75, 1.75, 1.75, 1.25]],
         "locations": ["Schankwagen Bühne 1", "Schankwagen Platz", "Shot-Bar/Spühle"],
         "number_of_shifts": [6, 6, 6],
-        "people_per_shift": [[2, 2, 5, 5, 5, 5], [3, 0, 0, 6, 6, 6], [2, 2, 3, 3, 3, 3]]
+        "people_per_shift": [[2, 2, 0, 0, 5, 5], [3, 4, 5, 6, 6, 6], [2, 2, 3, 3, 3, 3]]
     },
     {
         "shift_type": "Cocktailbar",
