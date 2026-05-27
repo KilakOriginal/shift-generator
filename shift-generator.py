@@ -64,11 +64,11 @@ AVAILABILITY_YEAR = 2026
 MORNING_START = time(8, 0)
 MORNING_END = time(12, 0)
 AFTERNOON_START = time(12, 0)
-AFTERNOON_END = time(16, 0)
+AFTERNOON_END = time(23, 59, 59)
 
-MAX_SHIFTS_BUILDUP = 2
-MAX_SHIFTS_FESTIVAL = 3
-MAX_SHIFTS_TEARDOWN = 2
+MAX_SHIFTS_BUILDUP = 1
+MAX_SHIFTS_FESTIVAL = 2
+MAX_SHIFTS_TEARDOWN = 1
 
 OPTIONS_AVAILABILITY_PRE = ["Di, 02.06. vormittags/ before noon", "Di, 02.06. nachmittags/ afternoon",
                             "Mi, 03.06. vormittags/ before noon", "Mi, 03.06. nachmittags/ afternoon",
