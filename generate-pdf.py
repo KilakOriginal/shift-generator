@@ -122,7 +122,7 @@ def write_pdf_overview(schedule_rows: list[dict], output_dir: Path) -> None:
         return
 
     styles = getSampleStyleSheet()
-    pdf_path = output_dir / "shift_type_location_schedules.pdf"
+    pdf_path = output_dir / "Schedules.pdf"
     try:
         doc = SimpleDocTemplate(
             str(pdf_path),
