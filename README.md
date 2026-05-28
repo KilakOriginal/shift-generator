@@ -50,6 +50,17 @@ Generates calendar files and a recipient manifest out of the master schedule.
 - Creates an `.ics` calendar file for each volunteer.
 - Creates a manifest file inside the output directory mapping the generated `.ics` files to the volunteers' email addresses.
 
+## PDF Generator (`generate-pdf.py`)
+
+Generates a single PDF overview of the master schedule, with one page per shift type and location.
+
+### Input Data
+- **Schedule File (`-f`, `--file`)**: The path to the generated `master_schedule.csv` file (default: `Output/master_schedule.csv`).
+- **Output Directory (`-o`, `--output`)**: Directory where the PDF will be saved (default: `Output/`).
+
+### Output
+- Creates a single PDF file named `Schedules.pdf` in the output directory.
+
 ## Email Sender (`send-mail.py`)
 
 Sends calendar invites and custom text emails to the volunteers via SMTP. SMTP details are loaded via configuration dict / environment variables.
