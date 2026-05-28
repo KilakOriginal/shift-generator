@@ -2,6 +2,10 @@
 
 A suite of Python scripts for managing volunteer shift schedules for the Campusfestival. It automates assigning volunteers to shifts based on their preferences and availability, generating calendar invites, and sending out schedule emails. 
 
+## Requirements
+You will need a recent version of Python installed, along with the packages listed in `requirements.txt`. You can install them using pip by issuing `pip install -r requirements.txt` in your terminal.
+
+
 ## Shift Generator (`shift-generator.py`)
 
 Generates the shift schedules by assigning volunteers to shifts based on availability and preferences.
@@ -38,6 +42,7 @@ Generates the shift schedules by assigning volunteers to shifts based on availab
   - `festival_schedule.csv`
   - `teardown_schedule.csv`
 
+
 ## Calendar Generator (`generate-ics.py`)
 
 Generates calendar files and a recipient manifest out of the master schedule.
@@ -61,9 +66,20 @@ Generates a single PDF overview of the master schedule, with one page per shift 
 ### Output
 - Creates a single PDF file named `Schedules.pdf` in the output directory.
 
+
 ## Email Sender (`send-mail.py`)
 
 Sends calendar invites and custom text emails to the volunteers via SMTP. SMTP details are loaded via configuration dict / environment variables.
+
+Make sure to either export the required SMTP configuration as environment variables or create a `.env` file in the source directory. The following variables are required:
+- `EMAIL_HOST`: SMTP server host (e.g., `smtp.example.com`)
+- `EMAIL_USER`: SMTP username (e.g., `john.doe@example.com`)
+- `EMAIL_PASSWORD`: SMTP password for the user
+- `EMAIL_FROM`: The email address that will appear in the "From" field of the sent emails (e.g., `john.doe@example.com`)
+
+The following variables are optional and will default to common values if not provided:
+- `EMAIL_PORT`: SMTP server port (default: `587`)
+- `EMAIL_USE_TLS`: Whether to use TLS for the SMTP connection (default: `True`)
 
 ### Input Data
 - **Email Content (`-i`, `--input`)**: Path to a plain text file containing the email body (required).
