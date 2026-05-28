@@ -2,8 +2,10 @@
 
 A suite of Python scripts for managing volunteer shift schedules for the Campusfestival. It automates assigning volunteers to shifts based on their preferences and availability, generating calendar invites, and sending out schedule emails. 
 
-## Requirements
+## Setup
 You will need a recent version of Python installed, along with the packages listed in `requirements.txt`. You can install them using pip by issuing `pip install -r requirements.txt` in your terminal.
+
+The default input directory is `Input/`, where you should place your `shifts.json` and `survey.csv` files. The `Input/email/` directory should contain a `text.txt` file for the email body and the subdirectory `Input/email/attachments` should contain all static attachments to be included in all emails. The generated schedules, calendar files, and PDFs will be saved in the `Output/` directory by default.
 
 
 ## Shift Generator (`shift-generator.py`)
